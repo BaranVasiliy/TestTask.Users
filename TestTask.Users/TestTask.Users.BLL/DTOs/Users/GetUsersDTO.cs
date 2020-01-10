@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TestTask.Users.BLL.DTOs.Users
 {
-    public class GetUsers
+    public class GetUsersDTO
     {
         public int Id { get; set; }
         public string FirstName { get; set; }

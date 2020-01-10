@@ -1,12 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
     <AzureFunctionsVersion>v2</AzureFunctionsVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="FunctionMonkey" Version="3.0.17" />
-    <PackageReference Include="FunctionMonkey.Compiler" Version="3.0.17" />
-    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="3.0.2" />
+    <PackageReference Include="FunctionMonkey" Version="2.2.0" />
+    <PackageReference Include="FunctionMonkey.Compiler" Version="2.2.0" />
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.24" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TestTask.Users.BLL\TestTask.Users.BLL.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">

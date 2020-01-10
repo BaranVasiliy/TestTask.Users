@@ -1,25 +1,25 @@
 ﻿using AzureFromTheTrenches.Commanding.Abstractions;
-using Microsoft.Azure.Documents;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TestTask.Users.BLL.DTOs.Users;
+using TestTask.Users.BLL.Services;
 using TestTask.Users.Commands;
-using TestTask.Users.Models;
-using User = TestTask.Users.Models.User;
 
 
 namespace TestTask.Users.Handlers
 {
-    public class GetUserCommandHandlers : ICommandHandler<GetUserCommand, List<User>>
+    public class GetUserCommandHandlers : ICommandHandler<GetUsersCommand, List<GetUsersDTO>>
     {
-        public Task<List<User>> ExecuteAsync(GetUserCommand command, List<User> previousResult)
+        private readonly IUserService _userService;
+
+        public GetUserCommandHandlers(IUserService userService)
         {
-            if (command.Users == null)
-            {
-                command.Users = new List<User>();
-                command.Users.Add(new User() { FirstName= "Name", LastName = "Name" });
-                return Task.FromResult(command.Users);
-            }
-            return Task.FromResult(command.Users);
+            _userService = userService;
+        }
+
+        public Task<List<GetUsersDTO>> ExecuteAsync(GetUsersCommand command, List<GetUsersDTO> previousResult)
+        {
+            return _userService.GetUserAsync();
         }
     }
 }
