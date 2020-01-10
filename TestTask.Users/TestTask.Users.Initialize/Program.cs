@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
 using TestTask.Users.DAL.EF.DataContext;
 using TestTask.Users.DAL.EF.Entities;
 using TestTask.Users.Initialize.SQL;
