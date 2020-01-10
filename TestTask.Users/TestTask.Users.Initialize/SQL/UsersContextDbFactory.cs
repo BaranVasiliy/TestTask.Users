@@ -13,18 +13,17 @@ namespace TestTask.Users.Initialize.SQL
     {
         public UserDbContext CreateDbContext(string[] args)
         {
-            IConfigurationRoot configuration = new ConfigurationBuilder()
+            var configurationBuilder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json")
-                .Build();
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
 
-            var builder = new DbContextOptionsBuilder<UserDbContext>();
+            IConfigurationRoot configuration = configurationBuilder.Build();
+            string connectionString = configuration.GetConnectionString("SqlServer");
 
-            var connectionString = configuration.GetConnectionString("DefaultConnection");
+            DbContextOptionsBuilder<UserDbContext> optionsBuilder = new DbContextOptionsBuilder<UserDbContext>()
+                .UseSqlServer(connectionString);
 
-            builder.UseSqlServer(connectionString);
-
-            return new UserDbContext(builder.Options);
+            return new UserDbContext(optionsBuilder.Options);
         }
     }
 }

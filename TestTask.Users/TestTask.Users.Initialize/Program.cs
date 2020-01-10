@@ -11,39 +11,24 @@ using TestTask.Users.Initialize.SQL;
 
 namespace TestTask.Users.Initialize
 {
-    public class Program : IDesignTimeDbContextFactory<UserDbContext>
+    public class Program
     {
-        public UserDbContext CreateDbContext(string[] args)
-        {
-            var configurationBuilder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
-
-            IConfigurationRoot configuration = configurationBuilder.Build();
-            string connectionString = configuration.GetConnectionString("DefaultConnection");
-
-            DbContextOptionsBuilder<UserDbContext> optionsBuilder = new DbContextOptionsBuilder<UserDbContext>()
-                .UseSqlServer(connectionString);
-
-            return new UserDbContext(optionsBuilder.Options);
-        }
-
         static void Main(string[] args)
         {
-            Program p = new Program();
+            UsersContextDbFactory usersContext = new UsersContextDbFactory();
 
-            using (UserDbContext sc = p.CreateDbContext(null))
+            using (UserDbContext context = usersContext.CreateDbContext(null))
             {
-                sc.Database.Migrate();
+                context.Database.Migrate();
 
-                sc.Users.AddRange
+                context.Users.AddRange
                 (
                     new User { FirstName = "Name", LastName = "LName", Age = 44},
                     new User { FirstName = "Nam", LastName = "LNam", Age = 44 },
                     new User { FirstName = "Na", LastName = "LNa", Age = 44 }
                 );
 
-                sc.SaveChanges();
+                context.SaveChanges();
             }
         }
     }

@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestTask.Users.DAL.EF", "Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestTask.Users.BLL", "TestTask.Users.BLL\TestTask.Users.BLL.csproj", "{BA398ACA-6342-419A-BF5B-76224197F86B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTask.Users.Initialize", "TestTask.Users.Initialize\TestTask.Users.Initialize.csproj", "{4BE40974-510E-4B5B-9CC7-2DF2BCDE4B44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestTask.Users.Initialize", "TestTask.Users.Initialize\TestTask.Users.Initialize.csproj", "{4BE40974-510E-4B5B-9CC7-2DF2BCDE4B44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

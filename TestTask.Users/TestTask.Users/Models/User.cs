@@ -1,4 +1,8 @@
-﻿namespace TestTask.Users.DAL.EF.Entities
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace TestTask.Users.Models
 {
     public class User
     {
