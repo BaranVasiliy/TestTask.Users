@@ -12,11 +12,10 @@ namespace TestTask.Users.DAL.EF.Extensions
         {
             modelBuilder.Entity<User>(entity =>
             {
-                entity.HasKey(i => i.Id);
-                entity.Property(p => p.Id).ValueGeneratedNever();
+                entity.HasKey(i => i.UserId);
+                entity.Property(p => p.UserId).ValueGeneratedNever();
                 entity.Property(p => p.FirstName).HasMaxLength(50).IsRequired();
                 entity.Property(p => p.LastName).HasMaxLength(50).IsRequired();
-                entity.Property(p => p.Age).HasMaxLength(3);
             });
         }
     }

@@ -17,9 +17,9 @@ namespace TestTask.Users.Initialize
 
                 context.Users.AddRange
                 (
-                    new User { FirstName = "Name", LastName = "LName", Age = 44},
-                    new User { FirstName = "Nam", LastName = "LNam", Age = 44 },
-                    new User { FirstName = "Na", LastName = "LNa", Age = 44 }
+                    new User { FirstName = "Name", LastName = "LName"},
+                    new User { FirstName = "Nam", LastName = "LNam"},
+                    new User { FirstName = "Na", LastName = "LNa" }
                 );
 
                 context.SaveChanges();
@@ -27,4 +27,3 @@ namespace TestTask.Users.Initialize
         }
     }
 }
-

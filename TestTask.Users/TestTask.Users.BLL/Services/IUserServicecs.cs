@@ -6,6 +6,8 @@ namespace TestTask.Users.BLL.Services
 {
     public interface IUserService
     {
-        Task<List<GetUsersDTO>> GetUserAsync();
+        Task<List<GetUsersDTO>> GetUsersAsync();
+        Task<GetUsersDTO> GetUserAsync(int? Id);
+        void Dispose();
     }
 }
