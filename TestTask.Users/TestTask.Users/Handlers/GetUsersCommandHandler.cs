@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using TestTask.Users.BLL.DTOs.Users;
 using TestTask.Users.BLL.Services;
+using TestTask.Users.BLL.Services.Contracts;
 using TestTask.Users.Commands;
 
 
 namespace TestTask.Users.Handlers
 {
-    public class GetUsersCommandHandlers : ICommandHandler<GetUsersCommand, List<GetUsersDTO>>
+    public class GetUsersCommandHandlers : ICommandHandler<GetUsersCommand, List<GetUserDTO>>
     {
         private readonly IUserService _userService;
 
@@ -17,9 +18,9 @@ namespace TestTask.Users.Handlers
             _userService = userService;
         }
 
-        public Task<List<GetUsersDTO>> ExecuteAsync(GetUsersCommand command, List<GetUsersDTO> previousResult)
+        public async Task<List<GetUserDTO>> ExecuteAsync(GetUsersCommand command, List<GetUserDTO> previousResult)
         {
-            return _userService.GetUsersAsync();
+           return await _userService.GetUsersAsync();
         }
     }
 }

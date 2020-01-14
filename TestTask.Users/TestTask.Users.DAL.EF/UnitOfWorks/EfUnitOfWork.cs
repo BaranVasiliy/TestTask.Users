@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using TestTask.Users.DAL.EF.DataContext;
 using TestTask.Users.DAL.EF.Entities;
 using TestTask.Users.DAL.EF.Interfaces;
 using TestTask.Users.DAL.EF.Repositories;
+using TestTask.Users.DAL.EF.Repositories.Contracts;
 
 namespace TestTask.Users.DAL.EF.UnitOfWorks
 {

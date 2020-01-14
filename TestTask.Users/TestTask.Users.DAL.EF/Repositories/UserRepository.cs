@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
 using TestTask.Users.DAL.EF.DataContext;
 using TestTask.Users.DAL.EF.Entities;
-using TestTask.Users.DAL.EF.Interfaces;
+using TestTask.Users.DAL.EF.Repositories.Contracts;
 
 namespace TestTask.Users.DAL.EF.Repositories
 {

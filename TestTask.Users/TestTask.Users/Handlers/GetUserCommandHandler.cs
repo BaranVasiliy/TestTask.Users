@@ -1,12 +1,12 @@
 ﻿using AzureFromTheTrenches.Commanding.Abstractions;
 using System.Threading.Tasks;
 using TestTask.Users.BLL.DTOs.Users;
-using TestTask.Users.BLL.Services;
+using TestTask.Users.BLL.Services.Contracts;
 using TestTask.Users.Commands;
 
 namespace TestTask.Users.Handlers
 {
-    public class GetUserCommandHandler : ICommandHandler<GetUserCommand, GetUsersDTO>
+    public class GetUserCommandHandler : ICommandHandler<GetUserCommand, GetUserDTO>
     {
         private readonly IUserService _userService;
 
@@ -15,9 +15,9 @@ namespace TestTask.Users.Handlers
             _userService = userService;
         }
 
-        public Task<GetUsersDTO> ExecuteAsync(GetUserCommand command, GetUsersDTO previousResult)
+        public async Task<GetUserDTO> ExecuteAsync(GetUserCommand command, GetUserDTO previousResult)
         {
-            return _userService.GetUserAsync(2);
+            return await _userService.GetUserAsync(command.Id);
         }
     }
 }

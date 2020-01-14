@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TestTask.Users.BLL.DTOs.Users
+﻿namespace TestTask.Users.BLL.DTOs.Users
 {
-    public class GetUsersDTO
+    public class GetUserDTO
     {
         public int UserId { get; set; }
+
         public string FirstName { get; set; }
+
         public string LastName { get; set; }
     }
 }

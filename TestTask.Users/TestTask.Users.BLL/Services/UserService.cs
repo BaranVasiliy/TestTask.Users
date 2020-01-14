@@ -1,10 +1,8 @@
-﻿using System;
+﻿using AutoMapper;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
-using AutoMapper;
-using Microsoft.EntityFrameworkCore.Storage;
 using TestTask.Users.BLL.DTOs.Users;
+using TestTask.Users.BLL.Services.Contracts;
 using TestTask.Users.DAL.EF.Entities;
 using TestTask.Users.DAL.EF.Interfaces;
 
@@ -12,34 +10,27 @@ namespace TestTask.Users.BLL.Services
 {
     public class UserService : IUserService
     {
-        private IUnitOFWork _database { get; set; }
+        private readonly IUnitOFWork _unitOfWork;
 
-        public UserService(IUnitOFWork database)
+        private readonly IMapper _mapper;
+
+        public UserService(IUnitOFWork unitOfWork, IMapper mapper )
         {
-            _database = database;
+            _unitOfWork = unitOfWork;
+            _mapper = mapper;
         }
-        public Task<List<GetUsersDTO>> GetUsersAsync()
+        public Task<List<GetUserDTO>> GetUsersAsync()
         {
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<User, GetUsersDTO>()).CreateMapper();
-            return Task.FromResult(mapper.Map<IEnumerable<User>, List<GetUsersDTO>>(_database.Users.GetAll()));
-        }
+            IEnumerable<User> users = _unitOfWork.Users.GetAll();
 
-        public Task<GetUsersDTO> GetUserAsync(int? Id)
-        {
-            if (Id == null)
-                throw new ValidationException("Не установлено id телефона", new Exception(""));
-            var user = _database.Users.Get(Id.Value);
-            if (user == null)
-                throw new ValidationException("Телефон не найден", new Exception(""));
-
-            return Task.FromResult(new GetUsersDTO {UserId = user.UserId, FirstName = user.FirstName, LastName = user.LastName});
+            return Task.FromResult(_mapper.Map<List<GetUserDTO>>(users));
         }
 
-        public void Dispose()
+        public Task<GetUserDTO> GetUserAsync(int Id)
         {
-            throw new System.NotImplementedException();
-        }
+            User user = _unitOfWork.Users.Get(Id);
 
-     
+            return Task.FromResult(new GetUserDTO {UserId = user.UserId, FirstName = user.FirstName, LastName = user.LastName});
+        }
     }
 }

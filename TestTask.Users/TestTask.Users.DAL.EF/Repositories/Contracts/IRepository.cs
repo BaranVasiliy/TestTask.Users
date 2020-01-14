@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace TestTask.Users.DAL.EF.Interfaces
+namespace TestTask.Users.DAL.EF.Repositories.Contracts
 {
     public interface IRepository<T> where T : class
     {

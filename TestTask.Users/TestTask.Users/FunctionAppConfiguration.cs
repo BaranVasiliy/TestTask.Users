@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data.SqlClient;
-using System.Text;
-using FunctionMonkey.Abstractions;
+﻿using FunctionMonkey.Abstractions;
 using FunctionMonkey.Abstractions.Builders;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using System.Net.Http;
+using TestTask.Users.BLL.Configurations.MapperProfiles;
 using TestTask.Users.BLL.Services;
+using TestTask.Users.BLL.Services.Contracts;
 using TestTask.Users.Commands;
 using TestTask.Users.DAL.EF.DataContext;
-using TestTask.Users.DAL.EF.Entities;
 using TestTask.Users.DAL.EF.Interfaces;
-using TestTask.Users.DAL.EF.Repositories;
 using TestTask.Users.DAL.EF.UnitOfWorks;
+using TestTask.Users.Extentions;
 using TestTask.Users.Handlers;
 
 namespace TestTask.Users
@@ -27,6 +24,8 @@ namespace TestTask.Users
                 {
                     serviceCollection.AddTransient<IUnitOFWork, EfUnitOfWork>();
                     serviceCollection.AddTransient<IUserService, UserService>();
+                    serviceCollection.AddTransient<UsersProfile>();
+                    serviceCollection.RegisterMapper();
                     serviceCollection.AddDbContext<UserDbContext>(
                         options => options.UseSqlServer(("Data Source=(localdb)\\mssqllocaldb;Initial Catalog=MyDatabase;Integrated Security=True")),
                         ServiceLifetime.Transient);
@@ -34,14 +33,11 @@ namespace TestTask.Users
                     commandRegistry.Register<GetUsersCommandHandlers>();
                 })
                 .Functions(functions => functions
-                    .HttpRoute("v1/GetUsers", route => route
-                        .HttpFunction<GetUsersCommand>()
+                    .HttpRoute("Get", route => route
+                        .HttpFunction<GetUsersCommand>("/Users",HttpMethod.Get)
+                        .HttpFunction<GetUserCommand>("/User/{Id}", HttpMethod.Get)
                     )
                 );
-            builder
-                .Functions(functions => functions
-                    .HttpRoute("v1/GetUser", route => route
-                        .HttpFunction<GetUserCommand>()));
         }
     }
 }

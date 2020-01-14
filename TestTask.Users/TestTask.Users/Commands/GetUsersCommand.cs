@@ -5,8 +5,7 @@ using TestTask.Users.BLL.DTOs.Users;
 
 namespace TestTask.Users.Commands
 {
-    public class GetUsersCommand : ICommand<List<GetUsersDTO>>
+    public class GetUsersCommand : ICommand<List<GetUserDTO>>
     {
-      
     }
 }
