@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using TestTask.Users.DAL.EF.DataContext;
 using TestTask.Users.DAL.EF.Entities;
 using TestTask.Users.DAL.EF.Interfaces;
@@ -10,14 +11,15 @@ namespace TestTask.Users.DAL.EF.UnitOfWorks
     public class EfUnitOfWork : IUnitOFWork
     {
         private UserDbContext _context;
-        private UserRepository _userRepository;
+
+        private IUserRepository _userRepository;
 
         public EfUnitOfWork(UserDbContext context)
         {
             _context = context;
         }
 
-        public IRepository<User> Users
+        public IUserRepository UserRepository
         {
             get
             {
@@ -25,9 +27,9 @@ namespace TestTask.Users.DAL.EF.UnitOfWorks
             }
         }
 
-        public void Save()
-        {
-            _context.SaveChanges();
+        public async Task SaveAsync()
+        { 
+            await _context.SaveChangesAsync();
         }
         private bool disposed = false;
 

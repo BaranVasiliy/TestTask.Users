@@ -1,9 +1,11 @@
-﻿using FunctionMonkey.Abstractions;
+﻿using System.Configuration;
+using System.IO;
+using FunctionMonkey.Abstractions;
 using FunctionMonkey.Abstractions.Builders;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Net.Http;
-using TestTask.Users.BLL.Configurations.MapperProfiles;
+using Microsoft.Extensions.Configuration;
 using TestTask.Users.BLL.Services;
 using TestTask.Users.BLL.Services.Contracts;
 using TestTask.Users.Commands;
@@ -24,20 +26,31 @@ namespace TestTask.Users
                 {
                     serviceCollection.AddTransient<IUnitOFWork, EfUnitOfWork>();
                     serviceCollection.AddTransient<IUserService, UserService>();
-                    serviceCollection.AddTransient<UsersProfile>();
                     serviceCollection.RegisterMapper();
                     serviceCollection.AddDbContext<UserDbContext>(
-                        options => options.UseSqlServer(("Data Source=(localdb)\\mssqllocaldb;Initial Catalog=MyDatabase;Integrated Security=True")),
+                        options => options.UseSqlServer(GetConnectionString()),
                         ServiceLifetime.Transient);
 
                     commandRegistry.Register<GetUsersCommandHandlers>();
                 })
                 .Functions(functions => functions
-                    .HttpRoute("Get", route => route
-                        .HttpFunction<GetUsersCommand>("/Users",HttpMethod.Get)
-                        .HttpFunction<GetUserCommand>("/User/{Id}", HttpMethod.Get)
+                    .HttpRoute("users", route => route
+                        .HttpFunction<GetUsersCommand>("",HttpMethod.Get)
+                        .HttpFunction<GetUserCommand>("/{id}", HttpMethod.Get)
                     )
                 );
+        }
+
+        public string GetConnectionString()
+        {
+            var configurationBuilder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+
+            IConfigurationRoot configuration = configurationBuilder.Build();
+            string connectionString = configuration.GetConnectionString("DefaultConnection");
+
+            return connectionString;
         }
     }
 }

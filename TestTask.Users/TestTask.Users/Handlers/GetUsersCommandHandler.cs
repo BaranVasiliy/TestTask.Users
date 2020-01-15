@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TestTask.Users.BLL.DTOs.Users;
-using TestTask.Users.BLL.Services;
 using TestTask.Users.BLL.Services.Contracts;
 using TestTask.Users.Commands;
 

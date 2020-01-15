@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
 using TestTask.Users.DAL.EF.Entities;
-using Microsoft.Extensions.Configuration;
 using TestTask.Users.DAL.EF.Extensions;
 
 namespace TestTask.Users.DAL.EF.DataContext

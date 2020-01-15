@@ -19,18 +19,18 @@ namespace TestTask.Users.BLL.Services
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public Task<List<GetUserDTO>> GetUsersAsync()
+        public async Task<List<GetUserDTO>> GetUsersAsync()
         {
-            IEnumerable<User> users = _unitOfWork.Users.GetAll();
+            IEnumerable<User> users = await _unitOfWork.UserRepository.GetAll();
 
-            return Task.FromResult(_mapper.Map<List<GetUserDTO>>(users));
+            return _mapper.Map<List<GetUserDTO>>(users);
         }
 
-        public Task<GetUserDTO> GetUserAsync(int Id)
+        public async Task<GetUserDTO> GetUserAsync(int id)
         {
-            User user = _unitOfWork.Users.Get(Id);
+            User user = await _unitOfWork.UserRepository.GetById(id);
 
-            return Task.FromResult(new GetUserDTO {UserId = user.UserId, FirstName = user.FirstName, LastName = user.LastName});
+            return _mapper.Map<GetUserDTO>(user);
         }
     }
 }

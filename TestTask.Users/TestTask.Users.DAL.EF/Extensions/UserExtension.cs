@@ -11,7 +11,7 @@ namespace TestTask.Users.DAL.EF.Extensions
             {
                 entity.HasKey(i => i.UserId);
 
-                entity.Property(p => p.UserId).ValueGeneratedNever();
+                entity.Property(p => p.UserId).ValueGeneratedOnAdd();
 
                 entity.Property(p => p.FirstName).HasMaxLength(50).IsRequired();
 
