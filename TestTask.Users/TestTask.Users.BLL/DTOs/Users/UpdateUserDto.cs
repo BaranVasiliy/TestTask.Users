@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using AzureFromTheTrenches.Commanding.Abstractions;
-using TestTask.Users.BLL.DTOs.Users;
 
-namespace TestTask.Users.Commands
+namespace TestTask.Users.BLL.DTOs.Users
 {
-    public class UpdateUserCommand : ICommand<UpdateUserDto>
+    public class UpdateUserDto
     {
         public string FirstName { get; set; }
 

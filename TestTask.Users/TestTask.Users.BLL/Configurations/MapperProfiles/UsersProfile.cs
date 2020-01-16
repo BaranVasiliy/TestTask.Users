@@ -9,6 +9,8 @@ namespace TestTask.Users.BLL.Configurations.MapperProfiles
         public UsersProfile()
         {
             CreateMap<User, GetUserDto>();
+            CreateMap<User, CreateUserDto>();
+            CreateMap<User, UpdateUserDto>();
         }
     }
 }

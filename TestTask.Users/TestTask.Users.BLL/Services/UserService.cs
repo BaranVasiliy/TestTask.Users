@@ -44,7 +44,7 @@ namespace TestTask.Users.BLL.Services
             return _mapper.Map<GetUserDto>(newUser);
         }
 
-        public async Task<GetUserDto> UpdateUserAsync(GetUserDto item)
+        public async Task<GetUserDto> UpdateUserAsync(UpdateUserDto item)
         {
             User itemToUpdate = _mapper.Map<User>(item);
 

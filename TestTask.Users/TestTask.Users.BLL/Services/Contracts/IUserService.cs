@@ -9,7 +9,7 @@ namespace TestTask.Users.BLL.Services.Contracts
         Task<List<GetUserDto>> GetUsersAsync();
         Task<GetUserDto> GetUserAsync(int id);
         Task<GetUserDto> CreateUserAsync(CreateUserDto item);
-        Task<GetUserDto> UpdateUserAsync(GetUserDto item);
+        Task<GetUserDto> UpdateUserAsync(UpdateUserDto item);
         Task DeleteUserAsync(GetUserDto item);
     }
 }

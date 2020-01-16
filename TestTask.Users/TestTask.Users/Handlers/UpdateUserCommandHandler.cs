@@ -9,17 +9,8 @@ using TestTask.Users.Commands;
 
 namespace TestTask.Users.Handlers
 {
-    class UpdateUserCommandHandler : ICommandHandler<UpdateUserCommand, GetUserDto>
+    class UpdateUserCommandHandler 
     {
-        private readonly IUserService _userService;
-
-        public UpdateUserCommandHandler(IUserService userService)
-        {
-            _userService = userService;
-        }
-        public async Task<GetUserDto> ExecuteAsync(UpdateUserCommand command, GetUserDto previousResult)
-        {
-            return await _userService.UpdateUserAsync();
-        }
+    
     }
 }
