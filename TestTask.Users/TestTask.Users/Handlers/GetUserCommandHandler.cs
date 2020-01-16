@@ -6,7 +6,7 @@ using TestTask.Users.Commands;
 
 namespace TestTask.Users.Handlers
 {
-    public class GetUserCommandHandler : ICommandHandler<GetUserCommand, GetUserDTO>
+    public class GetUserCommandHandler : ICommandHandler<GetUserCommand, GetUserDto>
     {
         private readonly IUserService _userService;
 
@@ -15,7 +15,7 @@ namespace TestTask.Users.Handlers
             _userService = userService;
         }
 
-        public async Task<GetUserDTO> ExecuteAsync(GetUserCommand command, GetUserDTO previousResult)
+        public async Task<GetUserDto> ExecuteAsync(GetUserCommand command, GetUserDto previousResult)
         {
             return await _userService.GetUserAsync(command.Id);
         }

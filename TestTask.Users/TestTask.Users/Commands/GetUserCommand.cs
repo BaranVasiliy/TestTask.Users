@@ -3,7 +3,7 @@ using TestTask.Users.BLL.DTOs.Users;
 
 namespace TestTask.Users.Commands
 {
-    public class GetUserCommand : ICommand<GetUserDTO>
+    public class GetUserCommand : ICommand<GetUserDto>
     {
         public int Id { get; set; }
     }

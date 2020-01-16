@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using TestTask.Users.DAL.EF.DataContext;
-using TestTask.Users.DAL.EF.Entities;
 using TestTask.Users.DAL.EF.Interfaces;
 using TestTask.Users.DAL.EF.Repositories;
 using TestTask.Users.DAL.EF.Repositories.Contracts;

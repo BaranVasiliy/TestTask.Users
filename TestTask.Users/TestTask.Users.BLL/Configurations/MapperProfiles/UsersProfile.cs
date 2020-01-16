@@ -8,7 +8,7 @@ namespace TestTask.Users.BLL.Configurations.MapperProfiles
     {
         public UsersProfile()
         {
-            CreateMap<User, GetUserDTO>();
+            CreateMap<User, GetUserDto>();
         }
     }
 }

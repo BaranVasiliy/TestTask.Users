@@ -8,7 +8,7 @@ using TestTask.Users.DAL.EF.Repositories.Contracts;
 
 namespace TestTask.Users.DAL.EF.Repositories
 {
-    public class UserRepository : AsyncRepository<User>, IUserRepository
+    public class UserRepository : GenericRepository<int, User>, IUserRepository
     {
         public UserRepository(UserDbContext context) : base(context) { }
     }

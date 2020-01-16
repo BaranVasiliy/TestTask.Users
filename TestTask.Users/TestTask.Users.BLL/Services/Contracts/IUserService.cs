@@ -6,7 +6,10 @@ namespace TestTask.Users.BLL.Services.Contracts
 {
     public interface IUserService
     {
-        Task<List<GetUserDTO>> GetUsersAsync();
-        Task<GetUserDTO> GetUserAsync(int id);
+        Task<List<GetUserDto>> GetUsersAsync();
+        Task<GetUserDto> GetUserAsync(int id);
+        Task<GetUserDto> CreateUserAsync(CreateUserDto item);
+        Task<GetUserDto> UpdateUserAsync(GetUserDto item);
+        Task DeleteUserAsync(GetUserDto item);
     }
 }

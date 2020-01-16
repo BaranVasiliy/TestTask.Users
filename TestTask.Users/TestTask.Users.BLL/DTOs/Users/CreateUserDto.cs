@@ -1,11 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace TestTask.Users.BLL.DTOs.Users
 {
-    public class GetUserDto
+    public class CreateUserDto
     {
-        public int Id { get; set; }
-
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
@@ -17,3 +17,4 @@ namespace TestTask.Users.BLL.DTOs.Users
         public string Email { get; set; }
     }
 }
+

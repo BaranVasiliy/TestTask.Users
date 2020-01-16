@@ -9,13 +9,19 @@ namespace TestTask.Users.DAL.EF.Extensions
         {
             modelBuilder.Entity<User>(entity =>
             {
-                entity.HasKey(i => i.UserId);
+                entity.HasKey(i => i.Id);
 
-                entity.Property(p => p.UserId).ValueGeneratedOnAdd();
+                entity.Property(p => p.Id).ValueGeneratedOnAdd();
 
                 entity.Property(p => p.FirstName).HasMaxLength(50).IsRequired();
 
                 entity.Property(p => p.LastName).HasMaxLength(50).IsRequired();
+
+                entity.Property(p => p.Email).HasMaxLength(50).IsRequired();
+
+                entity.Property(p => p.Phone).HasMaxLength(15).IsRequired();
+
+                entity.Property(p => p.DataBirth).IsRequired();
             });
         }
     }
