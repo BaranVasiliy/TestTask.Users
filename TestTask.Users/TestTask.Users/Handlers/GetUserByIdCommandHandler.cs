@@ -6,16 +6,16 @@ using TestTask.Users.Commands;
 
 namespace TestTask.Users.Handlers
 {
-    public class GetUserCommandHandler : ICommandHandler<GetUserCommand, GetUserDto>
+    public class GetUserByIdCommandHandler : ICommandHandler<GetUserByIdCommand, GetUserDto>
     {
         private readonly IUserService _userService;
 
-        public GetUserCommandHandler(IUserService userService)
+        public GetUserByIdCommandHandler(IUserService userService)
         {
             _userService = userService;
         }
 
-        public async Task<GetUserDto> ExecuteAsync(GetUserCommand command, GetUserDto previousResult)
+        public async Task<GetUserDto> ExecuteAsync(GetUserByIdCommand command, GetUserDto previousResult)
         {
             return await _userService.GetUserAsync(command.Id);
         }

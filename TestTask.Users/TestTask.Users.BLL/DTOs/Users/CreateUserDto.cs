@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace TestTask.Users.BLL.DTOs.Users
 {
@@ -17,4 +15,3 @@ namespace TestTask.Users.BLL.DTOs.Users
         public string Email { get; set; }
     }
 }
-

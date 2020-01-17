@@ -19,6 +19,7 @@ namespace TestTask.Users.BLL.Services
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
+
         public async Task<List<GetUserDto>> GetUsersAsync()
         {
             IEnumerable<User> users = await _unitOfWork.UserRepository.GetAllAsync();
@@ -46,7 +47,9 @@ namespace TestTask.Users.BLL.Services
 
         public async Task<GetUserDto> UpdateUserAsync(UpdateUserDto item)
         {
-            User itemToUpdate = _mapper.Map<User>(item);
+            User user = await _unitOfWork.UserRepository.GetByIdAsync(item.Id);
+
+            User itemToUpdate = _mapper.Map(item, user);
 
             _unitOfWork.UserRepository.Update(itemToUpdate);
 
@@ -57,7 +60,9 @@ namespace TestTask.Users.BLL.Services
 
         public async Task DeleteUserAsync(GetUserDto item)
         {
-            User itemToRemove = _mapper.Map<User>(item);
+            User user = await _unitOfWork.UserRepository.GetByIdAsync(item.Id);
+
+            User itemToRemove = _mapper.Map(item,user);
 
             _unitOfWork.UserRepository.Remove(itemToRemove);
 

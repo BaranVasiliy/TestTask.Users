@@ -6,7 +6,8 @@ using TestTask.Users.BLL.DTOs.Users;
 
 namespace TestTask.Users.Commands
 {
-    public class DeleteUserCommand : ICommand<GetUserDto>
+    public class DeleteUserCommand : ICommand
     {
+        public int Id { get; set; }
     }
 }

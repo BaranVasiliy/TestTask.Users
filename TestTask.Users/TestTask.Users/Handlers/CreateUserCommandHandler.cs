@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using AzureFromTheTrenches.Commanding.Abstractions;
+using System;
 using System.Threading.Tasks;
-using AzureFromTheTrenches.Commanding.Abstractions;
 using TestTask.Users.BLL.DTOs.Users;
 using TestTask.Users.BLL.Services.Contracts;
 using TestTask.Users.Commands;
-using TestTask.Users.DAL.EF.Repositories.Contracts;
 
 namespace TestTask.Users.Handlers
 {
@@ -32,9 +29,9 @@ namespace TestTask.Users.Handlers
             {
                 FirstName =  command.FirstName,
                 LastName = command.LastName,
+                DataBirth = command.DataBirth,
                 Email = command.Email,
-                Phone = command.Phone,
-                DataBirth = DateTime.UtcNow
+                Phone = command.Phone
             };
         }
     }

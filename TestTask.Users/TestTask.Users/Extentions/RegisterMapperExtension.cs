@@ -11,6 +11,7 @@ namespace TestTask.Users.Extentions
             MapperConfiguration mapperConfiguration = new MapperConfiguration(c =>
             {
                 c.AddProfile<UsersProfile>();
+                c.AddProfile<Map>();
             });
 
             serviceCollection.AddSingleton(s => mapperConfiguration.CreateMapper());
