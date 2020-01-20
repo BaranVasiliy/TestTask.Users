@@ -23,7 +23,7 @@ namespace TestTask.Users.Handlers
         }
         public async Task ExecuteAsync(DeleteUserCommand command)
         {
-            GetUserDto user = await _userService.GetUserAsync(command.Id);
+            GetUserDTO user = await _userService.GetUserAsync(command.Id);
             await _userService.DeleteUserAsync(user);
         }
     }

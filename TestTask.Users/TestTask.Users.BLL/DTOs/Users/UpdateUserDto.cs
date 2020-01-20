@@ -1,4 +1,5 @@
 ﻿using System;
+using TestTask.Users.BLL.DTOs.Address;
 
 namespace TestTask.Users.BLL.DTOs.Users
 {
@@ -15,5 +16,7 @@ namespace TestTask.Users.BLL.DTOs.Users
         public string Phone { get; set; }
 
         public string Email { get; set; }
+
+        public GetAddressDto Address { get; set; }
     }
 }

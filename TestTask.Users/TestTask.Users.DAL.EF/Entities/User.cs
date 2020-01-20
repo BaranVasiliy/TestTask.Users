@@ -10,10 +10,14 @@ namespace TestTask.Users.DAL.EF.Entities
 
         public string LastName { get; set; }
 
-        public DateTime DataBirth { get; set; }
+        public DateTime DateBirth { get; set; }
 
         public string Phone { get; set; }
 
         public string Email { get; set; }
+
+        public int AddressId { get; set; }
+
+        public Address Address { get; set; }
     }
 }

@@ -12,9 +12,12 @@ namespace TestTask.Users.DAL.EF.DataContext
 
         public DbSet<User> Users { get; set; }
 
+        public DbSet<Address> Address { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.BuildUserModel();
+            modelBuilder.BuildAddressModel();
         }
     }
 }

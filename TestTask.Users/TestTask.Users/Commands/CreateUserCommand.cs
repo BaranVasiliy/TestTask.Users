@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using AzureFromTheTrenches.Commanding.Abstractions;
-using TestTask.Users.BLL.DTOs.Users;
+﻿using AzureFromTheTrenches.Commanding.Abstractions;
+using System;
+using TestTask.Users.BLL.DTOs.Address;
 
 namespace TestTask.Users.Commands
 {
@@ -17,5 +15,7 @@ namespace TestTask.Users.Commands
         public string Phone { get; set; }
 
         public string Email { get; set; }
+
+        public GetAddressDto Address { get; set; }
     }
 }

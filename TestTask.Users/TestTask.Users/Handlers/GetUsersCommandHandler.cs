@@ -8,7 +8,7 @@ using TestTask.Users.Commands;
 
 namespace TestTask.Users.Handlers
 {
-    public class GetUsersCommandHandlers : ICommandHandler<GetUsersCommand, List<GetUserDto>>
+    public class GetUsersCommandHandlers : ICommandHandler<GetUsersCommand, List<GetUserDTO>>
     {
         private readonly IUserService _userService;
 
@@ -17,8 +17,9 @@ namespace TestTask.Users.Handlers
             _userService = userService;
         }
 
-        public async Task<List<GetUserDto>> ExecuteAsync(GetUsersCommand command, List<GetUserDto> previousResult)
+        public async Task<List<GetUserDTO>> ExecuteAsync(GetUsersCommand command, List<GetUserDTO> previousResult)
         {
+            
            return await _userService.GetUsersAsync();
         }
     }

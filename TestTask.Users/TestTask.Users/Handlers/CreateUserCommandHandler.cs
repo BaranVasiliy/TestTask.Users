@@ -16,7 +16,6 @@ namespace TestTask.Users.Handlers
             _userService = userService;
         }
 
-
         public async Task ExecuteAsync(CreateUserCommand command)
         {
             CreateUserDto user = create(command);

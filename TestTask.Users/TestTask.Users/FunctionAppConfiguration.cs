@@ -1,12 +1,11 @@
-﻿using System.Configuration;
-using System.IO;
+﻿using FluentValidation;
 using FunctionMonkey.Abstractions;
 using FunctionMonkey.Abstractions.Builders;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using System.Net.Http;
-using FluentValidation;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using System.IO;
+using System.Net.Http;
 using TestTask.Users.BLL.Services;
 using TestTask.Users.BLL.Services.Contracts;
 using TestTask.Users.Commands;
@@ -43,7 +42,7 @@ namespace TestTask.Users
                         .HttpFunction<GetUserByIdCommand>("/{id}", HttpMethod.Get)
                         .HttpFunction<CreateUserCommand>(HttpMethod.Post)
                         .HttpFunction<UpdateUserCommand>("/update",HttpMethod.Put)
-                        .HttpFunction<DeleteUserCommand>("/delete", HttpMethod.Delete)
+                        .HttpFunction<DeleteUserCommand>("/{id}", HttpMethod.Delete)
                     )
                 );
         }

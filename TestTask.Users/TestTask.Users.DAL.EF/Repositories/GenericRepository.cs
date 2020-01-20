@@ -18,7 +18,10 @@ namespace TestTask.Users.DAL.EF.Repositories
             Context = context;
         }
 
-        public Task<TEntity> GetByIdAsync(TId id) => Context.Set<TEntity>().FindAsync(id);
+        public virtual async Task<TEntity> GetByIdAsync(TId id)
+        {
+            return await  Context.Set<TEntity>().FindAsync(id);
+        }
 
         public void Add(TEntity entity)
         { 
@@ -35,7 +38,7 @@ namespace TestTask.Users.DAL.EF.Repositories
             Context.Set<TEntity>().Remove(entity);
         }
 
-        public async Task<IEnumerable<TEntity>> GetAllAsync()
+        public virtual async Task<IEnumerable<TEntity>> GetAllAsync()
         {
             return await Context.Set<TEntity>().ToListAsync();
         }

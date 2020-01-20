@@ -20,21 +20,21 @@ namespace TestTask.Users.BLL.Services
             _mapper = mapper;
         }
 
-        public async Task<List<GetUserDto>> GetUsersAsync()
+        public async Task<List<GetUserDTO>> GetUsersAsync()
         {
             IEnumerable<User> users = await _unitOfWork.UserRepository.GetAllAsync();
 
-            return _mapper.Map<List<GetUserDto>>(users);
+            return _mapper.Map<List<GetUserDTO>>(users);
         }
 
-        public async Task<GetUserDto> GetUserAsync(int id)
+        public async Task<GetUserDTO> GetUserAsync(int id)
         {
             User user = await _unitOfWork.UserRepository.GetByIdAsync(id);
 
-            return _mapper.Map<GetUserDto>(user);
+            return _mapper.Map<GetUserDTO>(user);
         }
 
-        public async Task<GetUserDto> CreateUserAsync(CreateUserDto item)
+        public async Task<GetUserDTO> CreateUserAsync(CreateUserDto item)
         {
             User newUser = _mapper.Map<User>(item);
 
@@ -42,10 +42,10 @@ namespace TestTask.Users.BLL.Services
 
             await _unitOfWork.SaveAsync();
 
-            return _mapper.Map<GetUserDto>(newUser);
+            return _mapper.Map<GetUserDTO>(newUser);
         }
 
-        public async Task<GetUserDto> UpdateUserAsync(UpdateUserDto item)
+        public async Task<GetUserDTO> UpdateUserAsync(UpdateUserDto item)
         {
             User user = await _unitOfWork.UserRepository.GetByIdAsync(item.Id);
 
@@ -55,10 +55,10 @@ namespace TestTask.Users.BLL.Services
 
             await _unitOfWork.SaveAsync();
 
-            return _mapper.Map<GetUserDto>(itemToUpdate);
+            return _mapper.Map<GetUserDTO>(itemToUpdate);
         }
 
-        public async Task DeleteUserAsync(GetUserDto item)
+        public async Task DeleteUserAsync(GetUserDTO item)
         {
             User user = await _unitOfWork.UserRepository.GetByIdAsync(item.Id);
 

@@ -10,7 +10,7 @@ using TestTask.Users.DAL.EF.DataContext;
 namespace TestTask.Users.DAL.EF.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20200116111359_Initial")]
+    [Migration("20200120093147_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,13 +21,42 @@ namespace TestTask.Users.DAL.EF.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("TestTask.Users.DAL.EF.Entities.Address", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AddressLine")
+                        .IsRequired()
+                        .HasMaxLength(200);
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasMaxLength(30);
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasMaxLength(30);
+
+                    b.Property<string>("PostalCode")
+                        .IsRequired()
+                        .HasMaxLength(10);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Address");
+                });
+
             modelBuilder.Entity("TestTask.Users.DAL.EF.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DataBirth");
+                    b.Property<int>("AddressId");
+
+                    b.Property<DateTime>("DateBirth");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -47,7 +76,17 @@ namespace TestTask.Users.DAL.EF.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AddressId");
+
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("TestTask.Users.DAL.EF.Entities.User", b =>
+                {
+                    b.HasOne("TestTask.Users.DAL.EF.Entities.Address", "Address")
+                        .WithMany("Users")
+                        .HasForeignKey("AddressId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

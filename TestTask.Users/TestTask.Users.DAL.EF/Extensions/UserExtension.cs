@@ -11,8 +11,6 @@ namespace TestTask.Users.DAL.EF.Extensions
             {
                 entity.HasKey(i => i.Id);
 
-                entity.Property(p => p.Id).ValueGeneratedOnAdd();
-
                 entity.Property(p => p.FirstName).HasMaxLength(50).IsRequired();
 
                 entity.Property(p => p.LastName).HasMaxLength(50).IsRequired();
@@ -21,7 +19,11 @@ namespace TestTask.Users.DAL.EF.Extensions
 
                 entity.Property(p => p.Phone).HasMaxLength(15).IsRequired();
 
-                entity.Property(p => p.DataBirth).IsRequired();
+                entity.Property(p => p.DateBirth).IsRequired();
+
+                entity.HasOne(p => p.Address)
+                    .WithMany(p => p.Users)
+                    .HasForeignKey(p => p.AddressId);
             });
         }
     }

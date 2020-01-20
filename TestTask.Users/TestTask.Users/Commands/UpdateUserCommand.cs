@@ -17,5 +17,7 @@ namespace TestTask.Users.Commands
         public string Phone { get; set; }
 
         public string Email { get; set; }
+
+        public GetUserDTO Address { get; set; }
     }
 }

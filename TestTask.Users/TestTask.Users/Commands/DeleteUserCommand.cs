@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using AzureFromTheTrenches.Commanding.Abstractions;
-using TestTask.Users.BLL.DTOs.Users;
+﻿using AzureFromTheTrenches.Commanding.Abstractions;
 
 namespace TestTask.Users.Commands
 {

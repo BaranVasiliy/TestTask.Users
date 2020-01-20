@@ -9,7 +9,7 @@ namespace TestTask.Users
     {
         public Map()
         {
-            CreateMap<GetUserDto, UpdateUserDto>();
+            CreateMap<GetUserDTO, UpdateUserDto>();
         }
     }
 }

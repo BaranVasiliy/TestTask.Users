@@ -29,8 +29,12 @@ namespace TestTask.Users.Handlers
 
         public async Task ExecuteAsync(UpdateUserCommand command)
         {
-            GetUserDto user = await _userService.GetUserAsync(command.Id);
+            GetUserDTO user = await _userService.GetUserAsync(command.Id);
             user.FirstName = command.FirstName;
+            user.LastName = command.LastName;
+            user.DateBirth = command.DataBirth;
+            user.Email = command.Email;
+            user.Phone = command.Phone;
 
             UpdateUserDto result = _mapper.Map<UpdateUserDto>(user);
             await _userService.UpdateUserAsync(result);
