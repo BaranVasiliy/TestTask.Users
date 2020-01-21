@@ -15,6 +15,6 @@ namespace TestTask.Users.BLL.DTOs.Users
 
         public string Email { get; set; }
 
-        public GetAddressDto Address { get; set; }
+        public CreateAddressDto Address { get; set; }
     }
 }

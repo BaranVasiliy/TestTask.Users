@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using TestTask.Users.BLL.DTOs.Users;
 using TestTask.Users.BLL.Services.Contracts;
-using TestTask.Users.Commands;
+using TestTask.Users.Queries;
 
-
-namespace TestTask.Users.Handlers
+namespace TestTask.Users.Handlers.Queries
 {
     public class GetUsersCommandHandlers : ICommandHandler<GetUsersCommand, List<GetUserDTO>>
     {
@@ -19,8 +18,7 @@ namespace TestTask.Users.Handlers
 
         public async Task<List<GetUserDTO>> ExecuteAsync(GetUsersCommand command, List<GetUserDTO> previousResult)
         {
-            
-           return await _userService.GetUsersAsync();
+            return await _userService.GetUsersAsync();
         }
     }
 }

@@ -4,6 +4,5 @@ namespace TestTask.Users.DAL.EF.Repositories.Contracts
 {
     public interface IUserRepository : IGenericRepository<int, User>
     {
-        
     }
 }

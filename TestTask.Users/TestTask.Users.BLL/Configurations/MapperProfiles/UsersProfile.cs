@@ -13,9 +13,17 @@ namespace TestTask.Users.BLL.Configurations.MapperProfiles
 
             CreateMap<UpdateUserDto, User>();
 
+            CreateMap<GetUserDTO, User>();
+
             CreateMap<User, GetUserDTO>();
 
             CreateMap<Address, GetAddressDto>();
+
+            CreateMap<CreateAddressDto, Address>();
+
+            CreateMap<UpdateAddressDto, Address>();
+
+            CreateMap<GetAddressDto, Address>();
         }
     }
 }

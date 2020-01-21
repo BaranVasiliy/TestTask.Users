@@ -1,7 +1,7 @@
 ﻿using AzureFromTheTrenches.Commanding.Abstractions;
 using TestTask.Users.BLL.DTOs.Users;
 
-namespace TestTask.Users.Commands
+namespace TestTask.Users.Queries
 {
     public class GetUserByIdCommand : ICommand<GetUserDTO>
     {

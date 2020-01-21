@@ -15,6 +15,7 @@ namespace TestTask.Users.Initialize.SQL
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
 
             IConfigurationRoot configuration = configurationBuilder.Build();
+
             string connectionString = configuration.GetConnectionString("SqlServer");
 
             DbContextOptionsBuilder<UserDbContext> optionsBuilder = new DbContextOptionsBuilder<UserDbContext>()

@@ -1,6 +1,6 @@
 ﻿namespace TestTask.Users.BLL.DTOs.Address
 {
-    public class GetAddressDto
+    public class UpdateAddressDto
     {
         public string Country { get; set; }
 

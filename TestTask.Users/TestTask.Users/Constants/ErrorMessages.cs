@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace TestTask.Users.Constants
+﻿namespace TestTask.Users.Constants
 {
     public static class ErrorMessages
     {
@@ -11,5 +7,9 @@ namespace TestTask.Users.Constants
         public const string InvalidDateTime = "Date time should be in UTC format yyyy-MM-ddTH:mm:ss.fffK";
 
         public const string InvalidPhoneFormat = "Invalid phone format";
+
+        public const string InvalidNameFormat = "Invalid name format";
+
+        public const string InvalidLastNameFormat = "Invalid last name format";
     }
 }

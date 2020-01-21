@@ -2,9 +2,9 @@
 using System.Threading.Tasks;
 using TestTask.Users.BLL.DTOs.Users;
 using TestTask.Users.BLL.Services.Contracts;
-using TestTask.Users.Commands;
+using TestTask.Users.Queries;
 
-namespace TestTask.Users.Handlers
+namespace TestTask.Users.Handlers.Queries
 {
     public class GetUserByIdCommandHandler : ICommandHandler<GetUserByIdCommand, GetUserDTO>
     {

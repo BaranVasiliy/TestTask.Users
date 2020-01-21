@@ -10,7 +10,7 @@ using TestTask.Users.DAL.EF.DataContext;
 namespace TestTask.Users.DAL.EF.Migrations
 {
     [DbContext(typeof(UserDbContext))]
-    [Migration("20200120093147_Initial")]
+    [Migration("20200121092926_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,9 +43,14 @@ namespace TestTask.Users.DAL.EF.Migrations
                         .IsRequired()
                         .HasMaxLength(10);
 
+                    b.Property<int>("UserAddressId");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Address");
+                    b.HasIndex("UserAddressId")
+                        .IsUnique();
+
+                    b.ToTable("Addresses");
                 });
 
             modelBuilder.Entity("TestTask.Users.DAL.EF.Entities.User", b =>
@@ -53,8 +58,6 @@ namespace TestTask.Users.DAL.EF.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AddressId");
 
                     b.Property<DateTime>("DateBirth");
 
@@ -76,16 +79,14 @@ namespace TestTask.Users.DAL.EF.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AddressId");
-
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("TestTask.Users.DAL.EF.Entities.User", b =>
+            modelBuilder.Entity("TestTask.Users.DAL.EF.Entities.Address", b =>
                 {
-                    b.HasOne("TestTask.Users.DAL.EF.Entities.Address", "Address")
-                        .WithMany("Users")
-                        .HasForeignKey("AddressId")
+                    b.HasOne("TestTask.Users.DAL.EF.Entities.User", "User")
+                        .WithOne("Address")
+                        .HasForeignKey("TestTask.Users.DAL.EF.Entities.Address", "UserAddressId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

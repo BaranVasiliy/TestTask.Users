@@ -1,9 +1,6 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using TestTask.Users.DAL.EF.DataContext;
 using TestTask.Users.DAL.EF.Repositories.Contracts;
 

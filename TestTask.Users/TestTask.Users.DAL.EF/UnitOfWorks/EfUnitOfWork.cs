@@ -9,22 +9,16 @@ namespace TestTask.Users.DAL.EF.UnitOfWorks
 {
     public class EfUnitOfWork : IUnitOFWork
     {
-        private UserDbContext _context;
+        private readonly UserDbContext _context;
 
-        private IUserRepository _userRepository;
+        private  IUserRepository _userRepository;
 
         public EfUnitOfWork(UserDbContext context)
         {
             _context = context;
         }
 
-        public IUserRepository UserRepository
-        {
-            get
-            {
-                return _userRepository ?? (_userRepository = new UserRepository(_context));
-            }
-        }
+        public IUserRepository UserRepository => _userRepository ?? (_userRepository = new UserRepository(_context));
 
         public async Task SaveAsync()
         { 

@@ -16,6 +16,6 @@ namespace TestTask.Users.Commands
 
         public string Email { get; set; }
 
-        public GetAddressDto Address { get; set; }
+        public CreateAddressDto Address { get; set; }
     }
 }

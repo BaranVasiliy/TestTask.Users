@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace TestTask.Users.DAL.EF.Entities
+﻿namespace TestTask.Users.DAL.EF.Entities
 {
     public class Address
     {
@@ -14,6 +12,8 @@ namespace TestTask.Users.DAL.EF.Entities
 
         public string AddressLine { get; set; }
 
-        public ICollection<User> Users { get; set; }
+        public int UserAddressId { get; set; }
+
+        public User User { get; set; }
     }
 }

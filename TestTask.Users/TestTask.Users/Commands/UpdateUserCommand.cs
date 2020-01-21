@@ -1,6 +1,6 @@
 ﻿using AzureFromTheTrenches.Commanding.Abstractions;
 using System;
-using TestTask.Users.BLL.DTOs.Users;
+using TestTask.Users.BLL.DTOs.Address;
 
 namespace TestTask.Users.Commands
 {
@@ -18,6 +18,6 @@ namespace TestTask.Users.Commands
 
         public string Email { get; set; }
 
-        public GetUserDTO Address { get; set; }
+        public UpdateAddressDto Address { get; set; }
     }
 }

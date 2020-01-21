@@ -22,8 +22,8 @@ namespace TestTask.Users.DAL.EF.Extensions
                 entity.Property(p => p.DateBirth).IsRequired();
 
                 entity.HasOne(p => p.Address)
-                    .WithMany(p => p.Users)
-                    .HasForeignKey(p => p.AddressId);
+                    .WithOne(p => p.User)
+                    .HasForeignKey<Address>(p => p.UserAddressId);
             });
         }
     }
