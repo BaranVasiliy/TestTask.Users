@@ -1,10 +1,11 @@
 ﻿using AzureFromTheTrenches.Commanding.Abstractions;
 using System;
+using Microsoft.AspNetCore.Mvc;
 using TestTask.Users.BLL.DTOs.Address;
 
 namespace TestTask.Users.Commands
 {
-    public class CreateUserCommand : ICommand
+    public class CreateUserCommand : ICommand<IActionResult>
     {
         public string FirstName { get; set; }
 

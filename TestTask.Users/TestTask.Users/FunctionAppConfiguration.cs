@@ -37,8 +37,8 @@ namespace TestTask.Users
                 })
                 .Functions(functions => functions
                     .HttpRoute("users", route => route
-                        .HttpFunction<GetUsersCommand>(HttpMethod.Get)
-                        .HttpFunction<GetUserByIdCommand>("/{id}", HttpMethod.Get)
+                        .HttpFunction<GetUsersQuery>(HttpMethod.Get)
+                        .HttpFunction<GetUserByIdQuery>("/{id}", HttpMethod.Get)
                         .HttpFunction<CreateUserCommand>(HttpMethod.Post)
                         .HttpFunction<UpdateUserCommand>(HttpMethod.Put)
                         .HttpFunction<DeleteUserCommand>("/{id}", HttpMethod.Delete)

@@ -1,10 +1,11 @@
 ﻿using AzureFromTheTrenches.Commanding.Abstractions;
 using System;
+using Microsoft.AspNetCore.Mvc;
 using TestTask.Users.BLL.DTOs.Address;
 
 namespace TestTask.Users.Commands
 {
-    public class UpdateUserCommand : ICommand
+    public class UpdateUserCommand : ICommand<IActionResult>
     {
         public int Id { get; set; }
 

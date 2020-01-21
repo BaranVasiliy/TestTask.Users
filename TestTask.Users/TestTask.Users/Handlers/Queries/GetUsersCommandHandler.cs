@@ -1,13 +1,15 @@
 ﻿using AzureFromTheTrenches.Commanding.Abstractions;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using TestTask.Users.BLL.DTOs.Users;
 using TestTask.Users.BLL.Services.Contracts;
+using TestTask.Users.Handlers.Abstracts;
 using TestTask.Users.Queries;
 
 namespace TestTask.Users.Handlers.Queries
 {
-    public class GetUsersCommandHandlers : ICommandHandler<GetUsersCommand, List<GetUserDTO>>
+    public class GetUsersCommandHandlers : BaseActionHandler<GetUsersQuery>, ICommandHandler<GetUsersQuery, IActionResult>
     {
         private readonly IUserService _userService;
 
@@ -16,9 +18,9 @@ namespace TestTask.Users.Handlers.Queries
             _userService = userService;
         }
 
-        public async Task<List<GetUserDTO>> ExecuteAsync(GetUsersCommand command, List<GetUserDTO> previousResult)
+        protected override Task<IActionResult> ExecuteAction(GetUsersQuery command)
         {
-            return await _userService.GetUsersAsync();
+            throw new System.NotImplementedException();
         }
     }
 }
