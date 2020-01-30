@@ -1,17 +1,18 @@
 ﻿using AzureFromTheTrenches.Commanding.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using TestTask.Users.BLL.DTOs.Users;
 using TestTask.Users.BLL.Services.Contracts;
 using TestTask.Users.Handlers.Abstracts;
 using TestTask.Users.Queries;
 
 namespace TestTask.Users.Handlers.Queries
 {
-    public class GetUserByIdCommandHandler : BaseActionHandler<GetUserByIdQuery>, ICommandHandler<GetUserByIdQuery, IActionResult>
+    public class GetUserByIdQueryHandler : BaseActionHandler<GetUserByIdQuery>, ICommandHandler<GetUserByIdQuery, IActionResult>
     {
         private readonly IUserService _userService;
 
-        public GetUserByIdCommandHandler(IUserService userService)
+        public GetUserByIdQueryHandler(IUserService userService)
         {
             _userService = userService;
         }
@@ -19,7 +20,7 @@ namespace TestTask.Users.Handlers.Queries
 
         protected override async Task<IActionResult> ExecuteAction(GetUserByIdQuery command)
         {
-            var user = await _userService.GetUserAsync(command.Id);
+            GetUserDTO user = await _userService.GetUserAsync(command.Id);
 
             if (user == null)
             {

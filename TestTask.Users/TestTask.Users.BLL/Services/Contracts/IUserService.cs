@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using TestTask.Users.BLL.DTOs.Pagination;
 using TestTask.Users.BLL.DTOs.Users;
 
 namespace TestTask.Users.BLL.Services.Contracts
@@ -14,6 +16,11 @@ namespace TestTask.Users.BLL.Services.Contracts
 
         Task<GetUserDTO> UpdateUserAsync(UpdateUserDto item);
 
+        Task<List<GetUserDTO>> GetUserByCityAsync(string city);
+
         Task DeleteUserAsync(GetUserDTO item);
+
+        PagedResultDto<T> GetPaged<T>(IEnumerable<T> query,
+            int page, int pageSize) where T : class;
     }
 }

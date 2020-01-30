@@ -1,6 +1,10 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using TestTask.Users.BLL.DTOs;
+using TestTask.Users.BLL.DTOs.Pagination;
 using TestTask.Users.BLL.DTOs.Users;
 using TestTask.Users.BLL.Services.Contracts;
 using TestTask.Users.DAL.EF.Entities;
@@ -34,6 +38,12 @@ namespace TestTask.Users.BLL.Services
             return _mapper.Map<GetUserDTO>(user);
         }
 
+        public async Task<List<GetUserDTO>> GetUserByCityAsync(string city)
+        {
+            List<User> user = await _unitOfWork.UserRepository.GetUserByCity(city);
+
+            return _mapper.Map<List<GetUserDTO>>(user);
+        }
         public async Task<GetUserDTO> CreateUserAsync(CreateUserDto item)
         {
             User newUser = _mapper.Map<User>(item);
@@ -67,6 +77,24 @@ namespace TestTask.Users.BLL.Services
             _unitOfWork.UserRepository.Remove(itemToRemove);
 
             await _unitOfWork.SaveAsync();
+        }
+
+        public PagedResultDto<T> GetPaged<T>(IEnumerable<T> query,
+            int page, int pageSize) where T : class
+        {
+            PagedResultDto<T> result = new PagedResultDto<T>
+            {
+                CurrentPage = page, PageSize = pageSize, RowCount = query.Count()
+            };
+
+
+            double pageCount = (double)result.RowCount / pageSize;
+            result.PageCount = (int)Math.Ceiling(pageCount);
+
+            int skip = (page - 1) * pageSize;
+            result.Results = query.Skip(skip).Take(pageSize).ToList();
+
+            return result;
         }
     }
 }

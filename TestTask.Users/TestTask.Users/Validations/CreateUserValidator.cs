@@ -11,29 +11,29 @@ namespace TestTask.Users.Validations
         {
             RuleFor(a => a.FirstName)
                 .NotEmpty()
-                .MaximumLength(50).WithMessage(ErrorMessages.ExceededMaxLength)
+                .MaximumLength(50).WithMessage(ErrorMessagesConstatnts.ExceededMaxLength)
                 .Matches("[A-Z]")
-                .Matches("[a-z]").WithMessage(ErrorMessages.InvalidNameFormat);
+                .Matches("[a-z]").WithMessage(ErrorMessagesConstatnts.InvalidNameFormat);
 
             RuleFor(a => a.LastName)
                 .NotEmpty()
-                .MaximumLength(50).WithMessage(ErrorMessages.ExceededMaxLength)
+                .MaximumLength(50).WithMessage(ErrorMessagesConstatnts.ExceededMaxLength)
                 .Matches("[A-Z]")
-                .Matches("[a-z]").WithMessage(ErrorMessages.InvalidLastNameFormat); ;
+                .Matches("[a-z]").WithMessage(ErrorMessagesConstatnts.InvalidLastNameFormat); ;
 
             RuleFor(a => a.DataBirth)
                 .NotEmpty()
-                .WithMessage(ErrorMessages.InvalidDateTime);
+                .WithMessage(ErrorMessagesConstatnts.InvalidDateTime);
 
             RuleFor(a => a.Email)
                 .NotEmpty()
                 .MaximumLength(50)
-                .WithMessage(ErrorMessages.ExceededMaxLength)
+                .WithMessage(ErrorMessagesConstatnts.ExceededMaxLength)
                 .EmailAddress();
 
             RuleFor(a => a.Phone)
-                .NotEmpty().WithMessage(ErrorMessages.InvalidPhoneFormat)
-                .Matches("[0-9]").WithMessage(ErrorMessages.InvalidPhoneFormat);
+                .NotEmpty().WithMessage(ErrorMessagesConstatnts.InvalidPhoneFormat)
+                .Matches("[0-9]").WithMessage(ErrorMessagesConstatnts.InvalidPhoneFormat);
 
         }
     }

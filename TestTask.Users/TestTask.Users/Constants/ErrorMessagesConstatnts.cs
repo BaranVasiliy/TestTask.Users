@@ -1,6 +1,6 @@
 ﻿namespace TestTask.Users.Constants
 {
-    public static class ErrorMessages
+    public static class ErrorMessagesConstatnts
     {
         public const string ExceededMaxLength = "Exceeded max length";
 

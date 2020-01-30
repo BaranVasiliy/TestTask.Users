@@ -18,9 +18,16 @@ namespace TestTask.Users.Handlers.Queries
             _userService = userService;
         }
 
-        protected override Task<IActionResult> ExecuteAction(GetUsersQuery command)
+        protected  override async Task<IActionResult> ExecuteAction(GetUsersQuery command)
         {
-            throw new System.NotImplementedException();
+            List<GetUserDTO> user = await _userService.GetUsersAsync();
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(user);
         }
     }
 }

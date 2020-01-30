@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Remotion.Linq.Clauses;
 using TestTask.Users.DAL.EF.DataContext;
 using TestTask.Users.DAL.EF.Entities;
 using TestTask.Users.DAL.EF.Repositories.Contracts;
@@ -20,6 +22,11 @@ namespace TestTask.Users.DAL.EF.Repositories
         {
       
             return await Context.Users.Include(p => p.Address).AsNoTracking().ToListAsync();
+        }
+
+        public async Task<List<User>> GetUserByCity(string city)
+        {
+            return await Context.Users.Include(p => p.Address).Where(p => p.Address.City == city).ToListAsync();
         }
     }
 }

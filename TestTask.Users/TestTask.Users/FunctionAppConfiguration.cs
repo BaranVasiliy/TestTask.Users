@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.IO;
 using System.Net.Http;
 using TestTask.Users.Commands;
+using TestTask.Users.Constants;
 using TestTask.Users.DAL.EF.DataContext;
 using TestTask.Users.Extensions;
 using TestTask.Users.Queries;
@@ -14,6 +15,8 @@ namespace TestTask.Users
 {
     public class FunctionAppConfiguration : IFunctionAppConfiguration
     {
+        private const string ServiceBusConnectionName = "serviceBusConnection";
+
         public void Build(IFunctionHostBuilder builder)
         {
             builder
@@ -27,7 +30,7 @@ namespace TestTask.Users
 
                     serviceCollection.RegisterMapper();
                     serviceCollection.RegisterRepositories();
-                    serviceCollection.RegisterServices(); 
+                    serviceCollection.RegisterServices();
                     serviceCollection.RegisterValidators();
 
                     serviceCollection.AddDbContext<UserDbContext>(
@@ -40,10 +43,9 @@ namespace TestTask.Users
                         .HttpFunction<GetUsersQuery>(HttpMethod.Get)
                         .HttpFunction<GetUserByIdQuery>("/{id}", HttpMethod.Get)
                         .HttpFunction<CreateUserCommand>(HttpMethod.Post)
-                        .HttpFunction<UpdateUserCommand>(HttpMethod.Put)
+                        .HttpFunction<UpdateUserCommand>("/update",HttpMethod.Put)
                         .HttpFunction<DeleteUserCommand>("/{id}", HttpMethod.Delete)
-                    )
-                );
+                        .HttpFunction<GetUserByCityQuery>("/{city}")));
         }
     }
 }
