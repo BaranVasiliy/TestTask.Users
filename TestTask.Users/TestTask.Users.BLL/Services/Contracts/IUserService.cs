@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using TestTask.Users.BLL.DTOs.Pagination;
 using TestTask.Users.BLL.DTOs.Users;

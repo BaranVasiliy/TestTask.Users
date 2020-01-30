@@ -1,9 +1,8 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TestTask.Users.BLL.DTOs;
 using TestTask.Users.BLL.DTOs.Pagination;
 using TestTask.Users.BLL.DTOs.Users;
 using TestTask.Users.BLL.Services.Contracts;
@@ -87,11 +86,12 @@ namespace TestTask.Users.BLL.Services
                 CurrentPage = page, PageSize = pageSize, RowCount = query.Count()
             };
 
-
             double pageCount = (double)result.RowCount / pageSize;
+
             result.PageCount = (int)Math.Ceiling(pageCount);
 
             int skip = (page - 1) * pageSize;
+
             result.Results = query.Skip(skip).Take(pageSize).ToList();
 
             return result;

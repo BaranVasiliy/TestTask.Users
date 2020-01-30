@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using AzureFromTheTrenches.Commanding.Abstractions;
+﻿using AzureFromTheTrenches.Commanding.Abstractions;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using TestTask.Users.BLL.DTOs.Pagination;
 using TestTask.Users.BLL.DTOs.Users;
 using TestTask.Users.BLL.Services.Contracts;
@@ -24,7 +24,7 @@ namespace TestTask.Users.Handlers.Queries
         {
             List<GetUserDTO> user = await _userService.GetUserByCityAsync(command.City);
 
-            PagedResultDto<GetUserDTO> dataPaged = _userService.GetPaged(user, 1, 1);
+            PagedResultDto<GetUserDTO> dataPaged = _userService.GetPaged(user, 1, 10);
 
             if (dataPaged == null)
             {

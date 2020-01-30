@@ -1,33 +1,18 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using TestTask.Users.DAL.EF.DataContext;
-using TestTask.Users.DAL.EF.Entities;
-using TestTask.Users.Initialize.SQL;
+﻿using Microsoft.Extensions.Configuration;
+using System.IO;
+using System.Threading.Tasks;
+using TestTask.Users.Initialize.Initialization;
+using ConfigurationBuilder = TestTask.Users.Initialize.Initialization.ConfigurationBuilder;
 
 namespace TestTask.Users.Initialize
 {
-    public class Program
+    public static class Program
     {
-        static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            UsersContextDbFactory usersContext = new UsersContextDbFactory();
+            IConfigurationRoot config = ConfigurationBuilder.Create(Directory.GetCurrentDirectory());
 
-            using (UserDbContext context = usersContext.CreateDbContext(null))
-            {
-                context.Database.Migrate();
-
-                context.Users.AddRange
-                (
-                    new User { FirstName = "Test", LastName = "Test",Email = "Test",Phone="000000001",DateBirth = DateTime.Now, 
-                        Address = new Address(){AddressLine = "str", City = "Kharkov", Country = "Ukraine", PostalCode = "123123"}},
-                    new User { FirstName = "Test2", LastName = "Test2", Email = "Test2", Phone = "000000002", DateBirth = DateTime.Now, 
-                        Address = new Address() { AddressLine = "str", City = "Kharkov", Country = "Ukraine", PostalCode = "123123" } },
-                    new User { FirstName = "Test3", LastName = "Test3", Email = "Test3", Phone = "000000003", DateBirth = DateTime.Now, 
-                        Address = new Address() { AddressLine = "str", City = "Kharkov", Country = "Ukraine", PostalCode = "123123" } }
-                );
-
-                context.SaveChanges();
-            }
+            await AzureServiceBusInitializer.InitializeAsync(config);
         }
     }
 }

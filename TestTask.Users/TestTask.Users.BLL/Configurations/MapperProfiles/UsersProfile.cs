@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using TestTask.Users.BLL.DTOs;
 using TestTask.Users.BLL.DTOs.Address;
 using TestTask.Users.BLL.DTOs.Users;
 using TestTask.Users.DAL.EF.Entities;

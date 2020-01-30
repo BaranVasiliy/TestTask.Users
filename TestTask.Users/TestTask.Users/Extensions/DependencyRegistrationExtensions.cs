@@ -22,6 +22,8 @@ namespace TestTask.Users.Extensions
         public static void RegisterServices(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddTransient<IUserService, UserService>();
+            serviceCollection.AddTransient<IServiceBusPersistentConnection, ServiceBusPersistentConnection>();
+            serviceCollection.AddTransient<IServiceBusClient, ServiceBusClient>();
         }
 
         public static void RegisterValidators(this IServiceCollection services)

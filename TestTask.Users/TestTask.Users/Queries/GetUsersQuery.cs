@@ -5,7 +5,7 @@ using TestTask.Users.BLL.DTOs.Users;
 
 namespace TestTask.Users.Queries
 {
-    public class GetUsersQuery : ICommand<IActionResult>
+    public class GetUsersQuery : ICommand<IActionResult>, ICommandHandlerBase
     {
     }
 }
