@@ -6,9 +6,9 @@ namespace TestTask.Users.Handlers.Bus.Commands
 {
     public class AddUserCommandHandler : ICommandHandler<AddUserCommand>
     {
-        public Task ExecuteAsync(AddUserCommand command)
+        public async Task ExecuteAsync(AddUserCommand command)
         {
-            return  Task.CompletedTask;
+            await  Task.CompletedTask;
         }
     }
 }

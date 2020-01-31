@@ -31,6 +31,7 @@ namespace TestTask.Users.Handlers.Commands
             CreateUserDto user = _mapper.Map<CreateUserDto>(command);
 
             await _serviceBusClient.PublishUserUpdatedAsync(user);
+
             if (user == null)
             {
                 return NotFound();
