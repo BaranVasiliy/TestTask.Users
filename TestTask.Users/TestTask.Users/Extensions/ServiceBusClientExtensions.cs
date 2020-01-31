@@ -6,7 +6,7 @@ namespace TestTask.Users.Extensions
 {
     public static class ServiceBusClientExtensions
     {
-        public static async Task PublishUserUpdatedAsync(
+        public static async Task PublishUserCreatedAsync(
             this IServiceBusClient serviceBusClient, CreateUserDto createUserDto)
         {
             await serviceBusClient.PublishAsync(
